@@ -8,9 +8,12 @@ export default function AddProductModal() {
     <dialog id="add_product_modal" className="modal">
       <div className="modal-box">
         {/* CLOSE BUTTON */}
-        <form method="dialog">
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">X</button>
-        </form>
+        <button
+          onClick={() => document.getElementById('add_product_modal').close()}
+          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+        >
+          X
+        </button>
 
         {/* MODAL HEADER */}
         <h3 className="font-bold text-xl mb-8">Add New Product</h3>
@@ -85,9 +88,13 @@ export default function AddProductModal() {
 
           {/* MODAL ACTIONS */}
           <div className="modal-action">
-            <form method="dialog">
-              <button className="btn btn-ghost">Cancel</button>
-            </form>
+            <button
+              type="button"
+              onClick={() => document.getElementById('add_product_modal').close()}
+              className="btn btn-ghost"
+            >
+              Cancel
+            </button>
 
             <button
               type="submit"
@@ -108,9 +115,12 @@ export default function AddProductModal() {
       </div>
 
       {/* BACKDROP */}
-      <form method="dialog" className="modal-backdrop">
-        <button>close</button>
-      </form>
+      <button
+        className="modal-backdrop"
+        onClick={() => document.getElementById('add_product_modal').close()}
+      >
+        close
+      </button>
     </dialog>
   );
 }
