@@ -1,10 +1,13 @@
 import { ShoppingBagIcon, ShoppingCartIcon, StoreIcon } from "lucide-react";
 import { Link, useResolvedPath } from "react-router-dom";
 import ThemeSelector from "./ThemeSelector";
+import { useProductStore } from "../store/useProductStore";
 
 export default function Navbar() {
   const { pathname } = useResolvedPath();
   const isHomePage = pathname === "/";
+
+  const { products } = useProductStore();
 
   return (
     <div className="navbar max-w-7xl mx-auto min-h-[4rem] px-8 justify-between bg-base-100/80 backdrop-blur-lg border-b border-base-content/10 sticky top-0 z-50">
@@ -34,7 +37,7 @@ export default function Navbar() {
               <ShoppingBagIcon className="size-5" />
 
               <span className="badge badge-sm badge-primary indicator-item">
-                10
+                {products.length}
               </span>
             </div>
           </div>
