@@ -1,4 +1,4 @@
-import { DollarSignIcon, ImageIcon, Package2Icon, PlusCircleIcon } from "lucide-react";
+import { DollarSign, DollarSignIcon, ImageIcon, Package2Icon, PlusCircleIcon } from "lucide-react";
 import { useProductStore } from "../store/useProductStore";
 
 export default function AddProductModal() {
@@ -27,10 +27,6 @@ export default function AddProductModal() {
               </label>
 
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
-                  <Package2Icon className="size-5" />
-                </div>
-
                 <input
                   type="text"
                   placeholder="Enter product name"
@@ -38,6 +34,10 @@ export default function AddProductModal() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
+
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
+                  <Package2Icon className="size-5" />
+                </div>
               </div>
             </div>
 
@@ -48,10 +48,6 @@ export default function AddProductModal() {
               </label>
 
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
-                  <DollarSignIcon className="size-5" />
-                </div>
-
                 <input
                   type="number"
                   min="0"
@@ -61,6 +57,10 @@ export default function AddProductModal() {
                   value={formData.price}
                   onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                 />
+
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
+                  <DollarSignIcon className="size-5" />
+                </div>
               </div>
             </div>
 
@@ -71,10 +71,6 @@ export default function AddProductModal() {
               </label>
 
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
-                  <ImageIcon className="size-5" />
-                </div>
-
                 <input
                   type="text"
                   placeholder="https://example.com/image.jpg"
@@ -82,6 +78,10 @@ export default function AddProductModal() {
                   value={formData.image}
                   onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                 />
+
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
+                  <ImageIcon className="size-5" />
+                </div>
               </div>
             </div>
           </div>
