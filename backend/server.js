@@ -6,6 +6,7 @@ import cors from "cors";
 
 import productRoutes from "./routes/productRoutes.js";
 import { sql } from "./config/db.js";
+import { aj } from "./lib/arcjet.js";
 
 // Load environment variables
 dotenv.config();
@@ -23,6 +24,39 @@ app.use(
   })
 );
 app.use(morgan("dev")); // log the requests
+
+// Arcjet - rate limiting and bot detection
+app.use(async (req, res, next) => {
+  try {
+    const decision = await aj.protect(req, { requested: 1 }); // Deduct 1 tokens from the bucket
+    // console.log("Arcjet decision", decision);
+
+    if (decision.isDenied()) {
+      if (decision.reason.isRateLimit()) {
+        res.writeHead(429, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Too Many Requests" }));
+      } else if (decision.reason.isBot()) {
+        res.writeHead(403, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "No bots allowed" }));
+      } else {
+        res.writeHead(403, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Forbidden" }));
+      }
+      return;
+    }
+
+    // check for spoofed bots
+    if (decision.results.some((result) => result.reason.isBot() && result.reason.isSpoofed())) {
+      res.status(403).json({ error: "Spoofed bot detected" });
+      return;
+    }
+
+    next();
+  } catch (error) {
+    console.log("Arcjet error", error);
+    next(error);
+  }
+});
 
 // Initial routes
 app.use("/api/products", productRoutes);
