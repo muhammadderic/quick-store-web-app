@@ -30,10 +30,13 @@ export const useProductStore = create((set, get) => (
           error: null,
         });
       } catch (error) {
-        console.log(error);
-        set({
-          products: [],
+        if (error.status == 429) set({
+          error: "Rate limit exceeded",
+          products: []
+        });
+        else set({
           error: "Something went wrong",
+          products: []
         });
       } finally {
         set({ loading: false });
