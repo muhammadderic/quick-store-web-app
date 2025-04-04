@@ -1,9 +1,14 @@
 import { PackageIcon, PlusCircleIcon, RefreshCwIcon } from "lucide-react";
 import { useProductStore } from "../store/useProductStore";
 import ProductCard from "../components/ProductCard";
+import { useEffect } from "react";
 
 export default function HomePage() {
   const { products, error, loading, fetchProducts } = useProductStore();
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-8 ">
