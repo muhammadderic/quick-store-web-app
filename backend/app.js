@@ -4,6 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import routes from "./routes/index.js";
+import arcjetMiddleware from "./middlewares/arcjetMiddleware.js";
 
 dotenv.config();
 
@@ -16,6 +17,9 @@ app.use(helmet({
   contentSecurityPolicy: false,
 }));
 app.use(morgan("dev"));
+
+// Custom middlewares
+app.use(arcjetMiddleware);
 
 // Routes
 app.use("/api", routes);
