@@ -39,7 +39,7 @@ To get started with the **Quick Store Web**, follow these steps:
 ## Screenshots
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="./quick-store-app.png.jpeg" alt="Quick Store Web App" width="50%" />
+    <img src="./quick-store-app.png" alt="Quick Store Web App" width="50%" />
 </div>
 
 *Screenshot description*
