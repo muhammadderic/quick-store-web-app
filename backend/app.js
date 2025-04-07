@@ -8,7 +8,6 @@ import routes from "./routes/index.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middlewares
 app.use(express.json());
@@ -21,5 +20,10 @@ app.use(morgan("dev"));
 // Routes
 app.use("/api", routes);
 
-// Listen
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Error handling middleware (add this at the end)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Internal Server Error" });
+});
+
+export default app;
