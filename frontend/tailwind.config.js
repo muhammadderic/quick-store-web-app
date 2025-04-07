@@ -10,4 +10,19 @@ export default {
   theme: {
     extend: {},
   },
+  daisyui: {
+    themes: [
+      "pastel",
+      "retro",
+      "coffee",
+      "forest",
+      "cyberpunk",
+      "synthwave",
+      "luxury",
+      "autumn",
+      "valentine",
+      "night",
+      "dracula",
+    ],
+  },
 }

@@ -1,5 +1,6 @@
 import { Link, useResolvedPath } from "react-router-dom";
 import { ShoppingBagIcon, StoreIcon } from "lucide-react";
+import ThemeSelector from "./ThemeSelector";
 
 function Navbar() {
   const { pathname } = useResolvedPath();
@@ -24,7 +25,7 @@ function Navbar() {
 
           {/* RIGHT SECTION */}
           <div className="flex items-center gap-4">
-            Theme Selector
+            <ThemeSelector />
 
             {isHomePage && (
               <div className="indicator">
