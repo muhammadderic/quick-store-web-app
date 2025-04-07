@@ -1,5 +1,6 @@
-import { EditIcon, Trash2Icon } from "lucide-react";
-import { useProductStore } from "../store/useProductStore";
+import { EditIcon, Trash2Icon } from "lucide-react"
+import { useProductStore } from "../store/useProductStore"
+import { Link } from "react-router-dom"
 
 export default function ProductCard({ product }) {
   const { deleteProduct } = useProductStore();
