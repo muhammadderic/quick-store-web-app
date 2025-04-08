@@ -42,8 +42,6 @@ To get started with the **Quick Store Web**, follow these steps:
     <img src="./quick-store-app.png" alt="Quick Store Web App" width="50%" />
 </div>
 
-*Screenshot description*
-
 ## Technologies Used
 
 - **PERN Stack** – PostgreSQL, Express.js, React.js, and Node.js for full-stack web development
